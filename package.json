@@ -1,0 +1,19 @@
+{
+  "name": "editor-server",
+  "version": "1.0.0",
+  "description": "The REST API used for account management ",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InCodeDevs/Server.git"
+  },
+  "author": "The InCode Developers",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/InCodeDevs/Server/issues"
+  },
+  "homepage": "https://github.com/InCodeDevs/Server#readme"
+}
