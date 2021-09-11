@@ -131,4 +131,55 @@ function updatePassword(username, old, password) {
     }
 }
 
-module.exports = {existsUser, createUser, deleteUser, login, updateUsername, updatePassword}
+function storeData(username, password, dataName, data) {
+    if (!login(username, password).error) {
+        if (!users[username].data) {
+            users[username].data = {};
+        }
+
+        let msg = ""
+
+        if (data === null) {
+            delete users[username].data[dataName]
+            msg = "Deleted."
+        } else {
+            users[username].data[dataName] = data;
+            msg = "Saved."
+        }
+
+        save();
+
+        return {
+            error: false,
+            message: msg
+        }
+    } else {
+        return {
+            error: true,
+            message: "The password does not match."
+        }
+    }
+}
+
+function getData(username, password, dataName) {
+    if (!login(username, password).error) {
+        if (users[username].data[dataName]) {
+            return {
+                error: false,
+                message: users[username].data[dataName],
+            }
+        } else {
+            return {
+                error: true,
+                message: "The data was not found."
+            }
+        }
+    } else {
+        return {
+            error: true,
+            message: "The password does not match."
+        }
+    }
+}
+
+module.exports = {existsUser, createUser, deleteUser, login, updateUsername, updatePassword, storeData, getData}

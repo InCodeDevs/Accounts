@@ -50,10 +50,50 @@ app.post("/users/login", (req, res) => {
     }
 })
 
+app.post("/users/update/username", (req, res) => {
+    if (req.body.username && req.body.password && req.body.old) {
+        res.end(JSON.stringify(
+            users.updateUsername(req.body.old, req.body.username, req.body.password)
+        ))
+    } else {
+        res.end("{\"error\": true, \"message\": \"Invalid Request body.\"}")
+    }
+})
+
 app.post("/users/update/password", (req, res) => {
     if (req.body.username && req.body.password && req.body.old) {
         res.end(JSON.stringify(
             users.updatePassword(req.body.username, req.body.old, req.body.password)
+        ))
+    } else {
+        res.end("{\"error\": true, \"message\": \"Invalid Request body.\"}")
+    }
+})
+
+app.post('/users/data/store', (req, res) => {
+    if (req.body.username && req.body.password && req.body.data && req.body.dataName) {
+        res.end(JSON.stringify(
+            users.storeData(req.body.username, req.body.password, req.body.dataName, req.body.data)
+        ))
+    } else {
+        res.end("{\"error\": true, \"message\": \"Invalid Request body.\"}")
+    }
+})
+
+app.post('/users/data/delete', (req, res) => {
+    if (req.body.username && req.body.password && req.body.dataName) {
+        res.end(JSON.stringify(
+            users.storeData(req.body.username, req.body.password, req.body.dataName, null)
+        ))
+    } else {
+        res.end("{\"error\": true, \"message\": \"Invalid Request body.\"}")
+    }
+})
+
+app.get('/users/data', (req, res) => {
+    if (req.body.username && req.body.password && req.body.dataName) {
+        res.end(JSON.stringify(
+            users.getData(req.body.username, req.body.password, req.body.dataName)
         ))
     } else {
         res.end("{\"error\": true, \"message\": \"Invalid Request body.\"}")
