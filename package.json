@@ -1,5 +1,5 @@
 {
-  "name": "editor-server",
+  "name": "@incodelang/editor-server",
   "version": "1.0.0",
   "description": "The REST API used for account management ",
   "main": "src/index.js",
