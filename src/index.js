@@ -8,6 +8,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors')
 const bodyParser = require('body-parser');
+const crypto = require('crypto')
 
 const app = express();
 
@@ -111,7 +112,7 @@ app.get("/users/exists", (req, res) => {
 })
 
 app.post("/data/set", (req, res) => {
-    if(req.body.username && req.body.password && req.body.key && req.body.value) {
+    if (req.body.username && req.body.password && req.body.key && req.body.value) {
         res.end(JSON.stringify(
             data.setData(req.body.username, req.body.password, req.body.key, req.body.value)
         ))
@@ -121,7 +122,7 @@ app.post("/data/set", (req, res) => {
 })
 
 app.post("/data/delete", (req, res) => {
-    if(req.body.username && req.body.password && req.body.key) {
+    if (req.body.username && req.body.password && req.body.key) {
         res.end(JSON.stringify(
             data.setData(req.body.username, req.body.password, req.body.key, null)
         ))
@@ -131,7 +132,7 @@ app.post("/data/delete", (req, res) => {
 })
 
 app.post("/data/allow", (req, res) => {
-    if(req.body.username && req.body.password && req.body.key && req.body.newUser) {
+    if (req.body.username && req.body.password && req.body.key && req.body.newUser) {
         res.end(JSON.stringify(
             data.allow(req.body.username, req.body.password, req.body.key, req.body.newUser)
         ))
@@ -141,7 +142,7 @@ app.post("/data/allow", (req, res) => {
 })
 
 app.post("/data/disallow", (req, res) => {
-    if(req.body.username && req.body.password && req.body.key && req.body.newUser) {
+    if (req.body.username && req.body.password && req.body.key && req.body.newUser) {
         res.end(JSON.stringify(
             data.disallow(req.body.username, req.body.password, req.body.key, req.body.newUser)
         ))
@@ -151,10 +152,16 @@ app.post("/data/disallow", (req, res) => {
 })
 
 app.get("/data/get", (req, res) => {
-    if(req.body.username && req.body.password && req.body.key) {
-        res.end(JSON.stringify(
-            data.getData(req.body.username, req.body.password, req.body.key)
-        ))
+    if (req.body.username && req.body.password && req.body.key) {
+        if (req.body.hash) {
+            res.end(
+                crypto.createHash('sha256').update(JSON.stringify(data.getData(req.body.username, req.body.password, req.body.key))).digest("base64")
+            )
+        } else {
+            res.end(JSON.stringify(
+                data.getData(req.body.username, req.body.password, req.body.key)
+            ))
+        }
     } else {
         res.end("{\"error\": true, \"message\": \"Invalid Request body.\"}")
     }
