@@ -50,6 +50,17 @@ app.post("/users/login", (req, res) => {
     }
 })
 
+app.post("/users/update/password", (req, res) => {
+    if (req.body.username && req.body.password && req.body.old) {
+        res.end(JSON.stringify(
+            users.updatePassword(req.body.username, req.body.old, req.body.password)
+        ))
+    } else {
+        res.end("{\"error\": true, \"message\": \"Invalid Request body.\"}")
+    }
+})
+
+
 app.get("/users/exists", (req, res) => {
     if (req.body.username) {
         res.end("{\"error\": false, \"message\": " + users.existsUser(req.body.username) + "}")

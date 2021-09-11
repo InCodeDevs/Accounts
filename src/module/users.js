@@ -98,11 +98,37 @@ function login(username, password) {
 }
 
 function updateUsername(old, username, password) {
-
+    if (!login(old, password).error) {
+        users[username] = users[old];
+        delete users[old];
+        save();
+        return {
+            error: false,
+            message: "Updated."
+        }
+    } else {
+        return {
+            error: true,
+            message: "The password does not match."
+        }
+    }
 }
 
 function updatePassword(username, old, password) {
-
+    password = crypto.createHash("sha256").update(password).digest("base64")
+    if (!login(username, old).error) {
+        users[username].password = password;
+        save();
+        return {
+            error: false,
+            message: "Updated."
+        }
+    } else {
+        return {
+            error: true,
+            message: "The password does not match."
+        }
+    }
 }
 
 module.exports = {existsUser, createUser, deleteUser, login, updateUsername, updatePassword}
