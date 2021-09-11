@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/InCodeDevs/Server/issues"
   },
-  "homepage": "https://github.com/InCodeDevs/Server#readme"
+  "homepage": "https://github.com/InCodeDevs/Server#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.5"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.12"
+  }
 }
