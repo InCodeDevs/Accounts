@@ -18,7 +18,7 @@ const data = require('./module/data')
 app.use(cors())
 app.use(bodyParser())
 
-app.get("/", (req, res) => {
+app.post("/", (req, res) => {
     res.end("{\"error\": true, \"message\": \"Invalid API Endpoint.\"}")
 })
 
@@ -92,7 +92,7 @@ app.post('/users/data/delete', (req, res) => {
     }
 })
 
-app.get('/users/data', (req, res) => {
+app.post('/users/data', (req, res) => {
     if (req.body.username && req.body.password && req.body.dataName) {
         res.end(JSON.stringify(
             users.getData(req.body.username, req.body.password, req.body.dataName)
@@ -102,7 +102,7 @@ app.get('/users/data', (req, res) => {
     }
 })
 
-app.get('/users/data/all', (req, res) => {
+app.post('/users/data/all', (req, res) => {
     if (req.body.username && req.body.password) {
         res.end(JSON.stringify(
             users.getAllData(req.body.username, req.body.password)
@@ -112,7 +112,7 @@ app.get('/users/data/all', (req, res) => {
     }
 })
 
-app.get("/users/exists", (req, res) => {
+app.post("/users/exists", (req, res) => {
     if (req.body.username) {
         res.end("{\"error\": false, \"message\": " + users.existsUser(req.body.username) + "}")
     } else {
@@ -160,7 +160,7 @@ app.post("/data/disallow", (req, res) => {
     }
 })
 
-app.get("/data/get", (req, res) => {
+app.post("/data/get", (req, res) => {
     if (req.body.username && req.body.password && req.body.key) {
         if (req.body.hash) {
             res.end(
