@@ -182,4 +182,18 @@ function getData(username, password, dataName) {
     }
 }
 
-module.exports = {existsUser, createUser, deleteUser, login, updateUsername, updatePassword, storeData, getData}
+function getAllData(username, password) {
+    if (!login(username, password).error) {
+        return {
+            error: false,
+            message: users[username].data
+        }
+    } else {
+        return {
+            error: true,
+            message: "The password does not match."
+        }
+    }
+}
+
+module.exports = {existsUser, createUser, deleteUser, login, updateUsername, updatePassword, storeData, getData, getAllData}

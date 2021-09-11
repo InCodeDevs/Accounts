@@ -102,6 +102,15 @@ app.get('/users/data', (req, res) => {
     }
 })
 
+app.get('/users/data/all', (req, res) => {
+    if (req.body.username && req.body.password) {
+        res.end(JSON.stringify(
+            users.getAllData(req.body.username, req.body.password)
+        ))
+    } else {
+        res.end("{\"error\": true, \"message\": \"Invalid Request body.\"}")
+    }
+})
 
 app.get("/users/exists", (req, res) => {
     if (req.body.username) {
