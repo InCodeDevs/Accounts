@@ -6,7 +6,7 @@
 const express = require('express');
 const app = express();
 
-module.exports = function() {
-    app.listen(3000, "0.0.0.0")
+module.exports = function(port = 3000, host = "0.0.0.0") {
+    app.listen(port, host)
     return app;
 }
