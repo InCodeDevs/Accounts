@@ -4,23 +4,18 @@
  */
 
 const {
-    data,
-    users,
-    accountServer,
-    checkFile
+    accountServer
 } = require('../src/index');
-const path = require("path");
 
-accountServer({
-    port: 3000,
-    host: "0.0.0.0",
-    path: path.join(__dirname, 'private')
+const express = require('express');
+const app = express();
+
+app.get("/", (req, res) => {
+    res.end("Hello World")
 })
 
-if (!users.existsUser("mctzock")) {
-    console.log("User does not exists!")
-    console.log("Creating new User...")
-    console.log(users.createUser("mctzock", "AVerySecurePassword!"));
-} else {
-    console.log("User exists!")
-}
+app.listen(3000, "0.0.0.0")
+
+accountServer({
+    app: app
+})
