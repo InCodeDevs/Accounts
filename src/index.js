@@ -3,7 +3,10 @@
  * @copyright (c) 2018-2021 Ben Siebert. All rights reserved.
  */
 
-process.env.ACC_PRIV_PATH = "./private";
+const os = require('os')
+const path = require("path");
+
+process.env.ACC_PRIV_PATH = path.join(os.homedir(), "./.incode-accounts");
 
 const accountServer = require('./lib/accounts')
 const checkFile = require('./lib/module/checkfile')
