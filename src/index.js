@@ -14,7 +14,6 @@ const data = require('./lib/module/data')
 const users = require('./lib/module/users')
 const sampleApp = require('./lib/module/sampleApp')
 const postboxes = require('./lib/module/postboxes')
-const {WebClient} = require('./lib/module/WebClient')
 
 module.exports = {
     accountServer,
@@ -22,6 +21,5 @@ module.exports = {
     data,
     users,
     sampleApp,
-    postboxes,
-    WebClient
+    postboxes
 }
