@@ -23,14 +23,7 @@ class WebClient {
 
         this.#root = rootUrl;
 
-        if (require) {
-            this.#f = await import("node-fetch");
-            this.#f = this.#f.default;
-        }
-
-        if (this.#f === undefined || this.#f === null) {
-            this.#f = fetch;
-        }
+        this.#f = fetch;
 
         console.log(this.#f)
 
