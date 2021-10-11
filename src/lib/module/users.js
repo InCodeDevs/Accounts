@@ -7,6 +7,7 @@ const fs = require("fs");
 const path = require("path");
 const crypto = require('crypto');
 const checkfile = require('./checkfile');
+const {data} = require("./data");
 
 checkfile(path.join(process.env.ACC_PRIV_PATH, "users.json"), "{}")
 
@@ -195,4 +196,15 @@ function getAllData(username, password) {
     }
 }
 
-module.exports = {existsUser, createUser, deleteUser, login, updateUsername, updatePassword, storeData, getData, getAllData}
+
+module.exports = {
+    existsUser,
+    createUser,
+    deleteUser,
+    login,
+    updateUsername,
+    updatePassword,
+    storeData,
+    getData,
+    getAllData
+}

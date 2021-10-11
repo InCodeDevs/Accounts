@@ -7,14 +7,15 @@ const crypto = require('crypto')
 const express = require('express')
 const users = require('./module/users')
 const data = require('./module/data')
+const postboxes = require('./module/postboxes');
 
 const bodyParser = require("body-parser");
 const cors = require('cors')
 
-module.exports = function(options = {
+module.exports = function (options = {
     app: null
 }) {
-    
+
     options.app.use(cors());
     options.app.use(bodyParser());
 
@@ -113,6 +114,56 @@ module.exports = function(options = {
             res.end(JSON.stringify(
                 users.getData(req.body.username, req.body.password, req.body.dataName)
             ))
+        } else {
+            res.end("{\"error\": true, \"message\": \"Invalid Request body.\"}")
+        }
+    })
+
+    options.app.post("/api/v1/user/postboxes/create", (req, res) => {
+        if (req.body.username && req.body.password && req.body.name) {
+            res.end(JSON.stringify(
+                postboxes.createBox(req.body.username, req.body.password, req.body.name)
+            ));
+        } else {
+            res.end("{\"error\": true, \"message\": \"Invalid Request body.\"}")
+        }
+    });
+
+    options.app.post("/api/v1/user/postboxes/delete", (req, res) => {
+        if (req.body.username && req.body.password && req.body.name) {
+            res.end(JSON.stringify(
+                postboxes.deleteBox(req.body.username, req.body.password, req.body.name)
+            ));
+        } else {
+            res.end("{\"error\": true, \"message\": \"Invalid Request body.\"}")
+        }
+    })
+
+    options.app.post("/api/v1/user/postboxes/add", (req, res) => {
+        if (req.body.username && req.body.password && req.body.name && req.body.owner && req.body.entry) {
+            res.end(JSON.stringify(
+                postboxes.addToBox(req.body.username, req.body.password, req.body.name, req.body.owner, req.body.entry)
+            ));
+        } else {
+            res.end("{\"error\": true, \"message\": \"Invalid Request body.\"}")
+        }
+    })
+
+    options.app.post("/api/v1/user/postboxes/clear", (req, res) => {
+        if (req.body.username && req.body.password && req.body.name) {
+            res.end(JSON.stringify(
+                postboxes.clearBox(req.body.username, req.body.password, req.body.name)
+            ));
+        } else {
+            res.end("{\"error\": true, \"message\": \"Invalid Request body.\"}")
+        }
+    })
+
+    options.app.post("/api/v1/user/postboxes/read", (req, res) => {
+        if (req.body.username && req.body.password && req.body.name) {
+            res.end(JSON.stringify(
+                postboxes.readBox(req.body.username, req.body.password, req.body.name)
+            ));
         } else {
             res.end("{\"error\": true, \"message\": \"Invalid Request body.\"}")
         }

@@ -13,6 +13,7 @@ const checkFile = require('./lib/module/checkfile')
 const data = require('./lib/module/data')
 const users = require('./lib/module/users')
 const sampleApp = require('./lib/module/sampleApp')
+const {WebClient} = require('./lib/module/WebClient')
 
 module.exports = {
     accountServer,
