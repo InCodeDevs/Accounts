@@ -1,4 +1,4 @@
-export function existsUser(username: any): any;
+export function existsUser(username: any): boolean;
 export function createUser(username: any, password: any): {
     error: boolean;
     message: string;
