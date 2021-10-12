@@ -141,4 +141,11 @@ function clearBox(username, password, name) {
     }
 }
 
-module.exports = {createBox, deleteBox, addToBox, readBox, clearBox}
+function existsBox(owner, name) {
+    return {
+        error: false,
+        message: data[owner + "_" + name] === null ? "The postbox does not exists" : "The postbox exists"
+    }
+}
+
+module.exports = {createBox, deleteBox, addToBox, readBox, clearBox, existsBox}

@@ -247,6 +247,82 @@ The parameters must be send in the request body as JSON format.
 | `password` | `string` | The password of the user |
 | `key` | `string` | The name of the data |
 
+#### Postboxes API
+
+#### Create a Postbox
+
+```http
+  POST /api/v1/user/postboxes/create
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `username` | `string` | The name of the user |
+| `password` | `string` | The password of the user |
+| `name` | `string` | The name of the postbox |
+
+#### Delete a Postbox
+
+```http
+  POST /api/v1/user/postboxes/delete
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `username` | `string` | The name of the user |
+| `password` | `string` | The password of the user |
+| `name` | `string` | The name of the postbox |
+
+#### Add Data to a Postbox
+
+```http
+  POST /api/v1/user/postboxes/add
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `username` | `string` | The name of the user |
+| `password` | `string` | The password of the user |
+| `name` | `string` | The name of the postbox |
+| `owner` | `string` | The owner of the postbox |
+| `entry` | `string` or `object` | The data you want to add |
+
+#### Clear a Postbox
+
+```http
+  POST /api/v1/user/postboxes/clear
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `username` | `string` | The name of the user |
+| `password` | `string` | The password of the user |
+| `name` | `string` | The name of the postbox |
+
+#### Read a Postbox
+
+```http
+  POST /api/v1/user/postboxes/read
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `username` | `string` | The name of the user |
+| `password` | `string` | The password of the user |
+| `name` | `string` | The name of the postbox |
+
+#### Check if a Postbox exists
+
+```http
+  POST /api/v1/user/postboxes/exists
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `owner` | `string` | The owner of the postbox |
+| `name` | `string` | The name of the postbox |
+
+
 ## Authors
 
 - [@mctzock](https://www.github.com/mctzock)

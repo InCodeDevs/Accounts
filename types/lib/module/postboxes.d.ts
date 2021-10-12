@@ -18,3 +18,7 @@ export function clearBox(username: any, password: any, name: any): {
     error: boolean;
     message: string;
 };
+export function existsBox(owner: any, name: any): {
+    error: boolean;
+    message: string;
+};

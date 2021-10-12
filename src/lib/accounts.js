@@ -169,6 +169,16 @@ module.exports = function (options = {
         }
     })
 
+    options.app.post("/api/v1/user/postboxes/exists", (req, res) => {
+        if (req.body.owner && req.body.name) {
+            res.end(JSON.stringify(
+                postboxes.existsBox(req.body.owner, req.body.name)
+            ));
+        } else {
+            res.end("{\"error\": true, \"message\": \"Invalid Request body.\"}")
+        }
+    })
+
     options.app.post('/api/v1/user/users/data/all', (req, res) => {
         if (req.body.username && req.body.password) {
             res.end(JSON.stringify(
