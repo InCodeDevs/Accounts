@@ -149,6 +149,16 @@ module.exports = function (options = {
         }
     })
 
+    options.app.post("/api/v1/user/postboxes/remove", (req, res) => {
+        if (req.body.username && req.body.password && req.body.name && req.body.owner && req.body.at) {
+            res.end(JSON.stringify(
+                postboxes.removeFromBox(req.body.username, req.body.password, req.body.name, req.body.owner, req.body.at)
+            ));
+        } else {
+            res.end("{\"error\": true, \"message\": \"Invalid Request body.\"}")
+        }
+    })
+
     options.app.post("/api/v1/user/postboxes/clear", (req, res) => {
         if (req.body.username && req.body.password && req.body.name) {
             res.end(JSON.stringify(

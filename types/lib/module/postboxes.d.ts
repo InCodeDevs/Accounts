@@ -10,6 +10,10 @@ export function addToBox(username: any, password: any, name: any, owner: any, en
     error: boolean;
     message: string;
 };
+export function removeFromBox(username: any, password: any, name: any, timestamp: any): {
+    error: boolean;
+    message: string;
+};
 export function readBox(username: any, password: any, name: any): {
     error: boolean;
     message: any;

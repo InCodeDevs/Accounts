@@ -100,6 +100,35 @@ function addToBox(username, password, name, owner, entry) {
     }
 }
 
+function removeFromBox(username, password, name, timestamp) {
+    const loginRequest = login(username, password);
+
+    if (!loginRequest.error) {
+        if (data[username + "_" + name]) {
+
+            for (let i = 0; i < data[username + "_" + name].data.length; i++) {
+                if (timestamp === data[username + "_" + name].data[i].at) {
+                    data[username + "_" + name].data.splice(i, 1);
+                    break;
+                }
+            }
+
+            save();
+            return {
+                error: false,
+                message: "Removed data!"
+            }
+        } else {
+            return {
+                error: true,
+                message: "The postbox does not exists!"
+            }
+        }
+    } else {
+        return loginRequest;
+    }
+}
+
 function readBox(username, password, name) {
     const loginRequest = login(username, password);
 
@@ -155,4 +184,4 @@ function existsBox(owner, name) {
     }
 }
 
-module.exports = {createBox, deleteBox, addToBox, readBox, clearBox, existsBox}
+module.exports = {createBox, deleteBox, addToBox, removeFromBox, readBox, clearBox, existsBox}

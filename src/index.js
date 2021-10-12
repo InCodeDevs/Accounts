@@ -23,3 +23,17 @@ module.exports = {
     sampleApp,
     postboxes
 }
+
+console.log(postboxes.createBox("mctzock", "1234", "__a_test"));
+
+console.log(postboxes.clearBox("mctzock", "1234", "__a_test"));
+
+console.log(postboxes.addToBox("mctzock", "1234", "__a_test", "mctzock", "test"))
+
+console.log(postboxes.readBox("mctzock", "1234", "__a_test").message[0].at)
+
+console.log(postboxes.removeFromBox("mctzock", "1234", "__a_test",
+    postboxes.readBox("mctzock", "1234", "__a_test").message[0].at
+))
+
+console.log(postboxes.readBox("mctzock", "1234", "__a_test"))
