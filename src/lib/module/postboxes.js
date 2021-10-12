@@ -142,9 +142,16 @@ function clearBox(username, password, name) {
 }
 
 function existsBox(owner, name) {
-    return {
-        error: false,
-        message: data[owner + "_" + name] === null ? "The postbox does not exists" : "The postbox exists"
+    if (data[owner + "_" + name]) {
+        return {
+            error: false,
+            message: "The postbox exists"
+        }
+    } else {
+        return {
+            error: false,
+            message: "The postbox does not exists"
+        }
     }
 }
 
