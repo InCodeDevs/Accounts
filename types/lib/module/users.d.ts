@@ -31,3 +31,11 @@ export function getAllData(username: any, password: any): {
     error: boolean;
     message: any;
 };
+export function createToken(username: any, password: any): {
+    error: boolean;
+    message: string;
+};
+export function isTokenValid(username: any, token: any): {
+    error: boolean;
+    message: string;
+};
