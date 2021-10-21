@@ -8,7 +8,6 @@ const path = require("path");
 const fs = require("fs");
 const {login} = require('./users')
 
-
 checkfile(path.join(process.env.ACC_PRIV_PATH, "postboxes.json"), "{}")
 
 let data = {}

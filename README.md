@@ -96,7 +96,7 @@ The parameters must be send in the request body as JSON format.
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `username` | `string` | The name of the user |
-| `password` | `string` | The password of the user |
+| `password` | `string` | The password of the user (or a token)|
 
 #### Check if a User exists
 
@@ -322,6 +322,18 @@ The parameters must be send in the request body as JSON format.
 | `owner` | `string` | The owner of the postbox |
 | `name` | `string` | The name of the postbox |
 
+### Tokens
+
+#### Create a Token
+
+```http
+  POST /api/v1/user/tokens/create
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `username` | `string` | The name of the user |
+| `password` | `string` | The password of the user |
 
 ## Authors
 

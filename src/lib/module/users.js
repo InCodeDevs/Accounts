@@ -22,6 +22,20 @@ const save = () => {
 
 reload();
 
+checkfile(path.join(process.env.ACC_PRIV_PATH, "tokens.json"), "{}")
+
+let tokens = {}
+
+const reloadTokens = () => {
+    tokens = JSON.parse(fs.readFileSync(path.join(process.env.ACC_PRIV_PATH, "tokens.json")).toString())
+}
+
+const saveTokens = () => {
+    fs.writeFileSync(path.join(process.env.ACC_PRIV_PATH, "tokens.json"), JSON.stringify(tokens))
+}
+
+reloadTokens();
+
 function existsUser(username) {
     return Object.keys(users).includes(username);
 }
@@ -75,22 +89,30 @@ function deleteUser(username, password) {
 }
 
 function login(username, password) {
-    password = crypto.createHash("sha256").update(password).digest("base64")
     if (!existsUser(username)) {
         return {
             error: true,
             message: "The user does not exists!"
         }
     } else {
+        let origPassword = password;
+        password = crypto.createHash("sha256").update(password).digest("base64")
         if (users[username].password === password) {
             return {
                 error: false,
                 message: "The password matches."
             }
         } else {
-            return {
-                error: true,
-                message: "The password does not match."
+            if (!isTokenValid(username, origPassword).error) {
+                return {
+                    error: false,
+                    message: "The token is valid"
+                }
+            } else {
+                return {
+                    error: true,
+                    message: "The password does not match."
+                }
             }
         }
     }
@@ -196,6 +218,49 @@ function getAllData(username, password) {
 }
 
 
+function createToken(username, password) {
+    if (login(username, password)) {
+        let t = generateToken(32);
+        while(tokens[t]) {
+            t = generateToken(32);
+        }
+        tokens[t] = username;
+        saveTokens();
+        return {
+            error: false,
+            message: t
+        };
+    } else {
+        return login(username, password);
+    }
+}
+
+function isTokenValid(username, token) {
+    if(tokens[token] === username){
+        return {
+            error: false,
+            message: "Valid."
+        }
+    }else {
+        return {
+            error: true,
+            message: "Not valid."
+        }
+    }
+}
+
+function generateToken(length) {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() *
+            charactersLength));
+    }
+    return result;
+}
+
+
 module.exports = {
     existsUser,
     createUser,
@@ -205,5 +270,7 @@ module.exports = {
     updatePassword,
     storeData,
     getData,
-    getAllData
+    getAllData,
+    createToken,
+    isTokenValid
 }

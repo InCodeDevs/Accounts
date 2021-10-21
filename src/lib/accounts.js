@@ -309,4 +309,16 @@ module.exports = function (options = {
             }
         })
     }
+
+    if(!options.disable.createToken) {
+        options.app.post("/api/v1/user/tokens/create", (req, res) => {
+            if (req.body.username && req.body.password) {
+                res.end(JSON.stringify(
+                    users.createToken(req.body.username, req.body.password)
+                ))
+            }else {
+                res.end("{\"error\": true, \"message\": \"Invalid Request body.\"}")
+            }
+        })
+    }
 }
