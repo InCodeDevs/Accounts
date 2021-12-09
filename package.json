@@ -1,6 +1,6 @@
 {
   "name": "@incodelang/accounts",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "An API for simple Account Management",
   "main": "src/index.js",
   "typings": "./types",
