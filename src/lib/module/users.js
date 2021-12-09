@@ -184,7 +184,7 @@ function storeData(username, password, dataName, data) {
 
 function getData(username, password, dataName) {
     if (!login(username, password).error) {
-        if (users[username].data[dataName]) {
+        if (users[username].data && users[username].data[dataName]) {
             return {
                 error: false,
                 message: users[username].data[dataName],
@@ -207,7 +207,7 @@ function getAllData(username, password) {
     if (!login(username, password).error) {
         return {
             error: false,
-            message: users[username].data
+            message: users[username].data || {}
         }
     } else {
         return {
