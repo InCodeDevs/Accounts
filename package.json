@@ -2,9 +2,29 @@
   "name": "@incodelang/accounts",
   "version": "2.0.0",
   "description": "Simple Account Management for an express.js Application",
-  "main": "src/index.js",
+  "types": "./types",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pkg": "yarn clean && yarn build && yarn bundle && yarn minify && node scripts/link.js && yarn declare",
+    "build": "yarn tsc",
+    "bundle": "yarn bundle:esm && yarn bundle:umd",
+    "minify": "yarn minify:esm && yarn minify:umd",
+    "declare": "yarn declare:esm && yarn declare:umd",
+    "clean": "yarn del-cli --force dist && del-cli --force docs && del-cli --force bundles",
+    "postinstall": "yarn pkg",
+    "bundle:esm": "yarn bundle:esm.client && yarn bundle:esm.server",
+    "bundle:esm.client": "yarn rollup dist/client/index.js --file bundles/incode.accounts.client-esm.mjs --format esm -c rollup.config.js",
+    "bundle:esm.server": "yarn rollup dist/server/index.js --file bundles/incode.accounts.server-esm.mjs --format esm -c rollup.config.js",
+    "bundle:umd": "yarn bundle:umd.client && yarn bundle:umd.server",
+    "bundle:umd.client": "yarn rollup dist/client/index.js --file bundles/incode.accounts.client-umd.umd.js --format umd --name InCode -c rollup.config.js",
+    "bundle:umd.server": "yarn rollup dist/server/index.js --file bundles/incode.accounts.server-umd.umd.js --format umd --name InCode -c rollup.config.js",
+    "minify:esm": "yarn minify:esm.client && yarn minify:esm.server",
+    "minify:esm.client": "yarn uglifyjs bundles/incode.accounts.client-esm.mjs --compress --v8 --webkit --no-rename --keep-fnames --output bundles/incode.accounts.client-esm.min.mjs",
+    "minify:esm.server": "yarn uglifyjs bundles/incode.accounts.server-esm.mjs --compress --v8 --webkit --no-rename --keep-fnames --output bundles/incode.accounts.server-esm.min.mjs",
+    "minify:umd": "yarn minify:umd.client && yarn minify:umd.server",
+    "minify:umd.client": "yarn uglifyjs bundles/incode.accounts.client-umd.umd.js --compress --v8 --webkit --no-rename --keep-fnames --output bundles/incode.accounts.client-umd.umd.min.js",
+    "minify:umd.server": "yarn uglifyjs bundles/incode.accounts.server-umd.umd.js --compress --v8 --webkit --no-rename --keep-fnames --output bundles/incode.accounts.server-umd.umd.min.js",
+    "declare:umd": "tsc --declaration --declarationDir umd --allowJS --outDir temp umd/client.js umd/server.js && del-cli --force temp",
+    "declare:esm": "tsc --declaration --declarationDir esm --allowJS --outDir temp esm/client.js esm/server.js && del-cli --force temp"
   },
   "repository": {
     "type": "git",
@@ -15,5 +35,21 @@
   "bugs": {
     "url": "https://github.com/InCodeDevs/Accounts/issues"
   },
-  "homepage": "https://github.com/InCodeDevs/Accounts#readme"
+  "homepage": "https://github.com/InCodeDevs/Accounts#readme",
+  "devDependencies": {
+    "husky": "^7.0.4",
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "@rollup/plugin-json": "^4.1.0",
+    "@types/node": "^17.0.8",
+    "del-cli": "^4.0.1",
+    "prettier": "^2.5.1",
+    "rollup": "^2.63.0",
+    "uglify-js": "^3.14.5",
+    "yarn": "^1.22.17"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

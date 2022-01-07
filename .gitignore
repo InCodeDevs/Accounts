@@ -1,3 +1,7 @@
 private/
 node_modules/
 test.js
+dist/
+bundles/
+esm/
+umd/
