@@ -21,6 +21,7 @@
     "bundles",
     "scripts",
     "esm",
-    "umd"
+    "umd",
+    "test.js"
   ]
 }

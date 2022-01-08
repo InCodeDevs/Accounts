@@ -5,15 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ffcfa36-8bc1-48e0-bec1-43e962dae04d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/rollup.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/link.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/JSONObject.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/Options.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/Response.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/Storage.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/util/Security.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/util/UserManager.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,11 +26,20 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="GithubDefaultAccount">
     <option name="defaultAccountId" value="0f1045c2-21ea-49cd-b9f4-3601b1d3035f" />
@@ -43,6 +53,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/server/database" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -52,6 +63,9 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\bensi\Desktop\Projects\JuFo\InCode\Accounts\src\server\database" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\bensi\Desktop\Projects\JuFo\InCode\Accounts\scripts" />
     </key>
@@ -64,7 +78,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641572839251</updated>
-      <workItem from="1641572841529" duration="3029000" />
+      <workItem from="1641572841529" duration="10908000" />
     </task>
     <servers />
   </component>
