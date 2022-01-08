@@ -84,8 +84,12 @@ export default class Storage {
     let orig;
     switch (stream) {
       case Stream.USERS:
-        orig = fs.readFileSync(
-          path.join(os.homedir(), ".incode", "accounts", "users.json")
+        orig = JSON.parse(
+          fs
+            .readFileSync(
+              path.join(os.homedir(), ".incode", "accounts", "users.json")
+            )
+            .toString()
         );
         orig[key] = value;
         fs.writeFileSync(
@@ -94,8 +98,12 @@ export default class Storage {
         );
         break;
       case Stream.DATA:
-        orig = fs.readFileSync(
-          path.join(os.homedir(), ".incode", "accounts", "data.json")
+        orig = JSON.parse(
+          fs
+            .readFileSync(
+              path.join(os.homedir(), ".incode", "accounts", "data.json")
+            )
+            .toString()
         );
         orig[key] = value;
         fs.writeFileSync(
@@ -104,8 +112,12 @@ export default class Storage {
         );
         break;
       case Stream.POSTBOXES:
-        orig = fs.readFileSync(
-          path.join(os.homedir(), ".incode", "accounts", "postboxes.json")
+        orig = JSON.parse(
+          fs
+            .readFileSync(
+              path.join(os.homedir(), ".incode", "accounts", "postboxes.json")
+            )
+            .toString()
         );
         orig[key] = value;
         fs.writeFileSync(

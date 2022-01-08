@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ffcfa36-8bc1-48e0-bec1-43e962dae04d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.prettierignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.prettierrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/Storage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/Storage.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/util/Security.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/util/Security.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/util/UserManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/util/UserManager.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +74,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641572839251</updated>
-      <workItem from="1641572841529" duration="11009000" />
+      <workItem from="1641572841529" duration="12243000" />
     </task>
     <servers />
   </component>
