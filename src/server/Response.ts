@@ -13,7 +13,7 @@ export default class Response {
     public static readonly UNKNOWN_ERROR = 'Unknown error';
 
     public static json(code: number, message?: object | string): string {
-        if(message === undefined) {
+        if (message === undefined) {
             switch (code) {
                 case 200:
                     message = Response.OK;
