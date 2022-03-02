@@ -18,26 +18,17 @@ export default function (instance: Express, options: Options) {
   instance.use(cors());
 
   instance.post("/api/v2/account/user/create", (req, res) => {
-    if (req.body.username && req.body.password) {
-      const username = req.body.username;
-      const password = req.body.password;
-      switch (UserManager.createUser(username, password)) {
-        case 200:
-          res.end(Response.json(200));
-          break;
-        case 400:
-          res.end(
-            Response.json(400, "The password does not meet the requirements.")
-          );
-          break;
-        case 403:
-          res.end(Response.json(403, "The username is already taken."));
-          break;
-        default:
-          res.end(Response.json(500));
-      }
+    if (req.body.username && req.body.password && req.body.email) {
+      const status = UserManager.createUser({
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email,
+        active: false,
+        data: {},
+      });
+      res.status(status).end(Response.json(status));
     } else {
-      res.end(Response.json(400));
+      res.status(400).end(Response.json(400));
     }
   });
 

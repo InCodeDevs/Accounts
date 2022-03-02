@@ -61,20 +61,32 @@ export default class Storage {
     let orig;
     switch (stream) {
       case Stream.USERS:
-        orig = fs.readFileSync(
-          path.join(os.homedir(), ".incode", "accounts", "users.json")
+        orig = JSON.parse(
+          fs
+            .readFileSync(
+              path.join(os.homedir(), ".incode", "accounts", "users.json")
+            )
+            .toString()
         );
-        return orig[key] || undefined;
+        return orig[key];
       case Stream.DATA:
-        orig = fs.readFileSync(
-          path.join(os.homedir(), ".incode", "accounts", "data.json")
+        orig = JSON.parse(
+          fs
+            .readFileSync(
+              path.join(os.homedir(), ".incode", "accounts", "data.json")
+            )
+            .toString()
         );
-        return orig[key] || undefined;
+        return orig[key];
       case Stream.POSTBOXES:
-        orig = fs.readFileSync(
-          path.join(os.homedir(), ".incode", "accounts", "postboxes.json")
+        orig = JSON.parse(
+          fs
+            .readFileSync(
+              path.join(os.homedir(), ".incode", "accounts", "postboxes.json")
+            )
+            .toString()
         );
-        return orig[key] || undefined;
+        return orig[key];
       default:
         break;
     }
@@ -128,5 +140,9 @@ export default class Storage {
       default:
         break;
     }
+  }
+
+  public static has(key: string, stream: Stream): boolean {
+    return this.get(key, stream) !== undefined;
   }
 }
