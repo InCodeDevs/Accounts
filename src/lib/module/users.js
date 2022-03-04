@@ -272,5 +272,7 @@ module.exports = {
     getData,
     getAllData,
     createToken,
-    isTokenValid
+    isTokenValid,
+    reload,
+    save
 }

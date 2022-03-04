@@ -39,3 +39,5 @@ export function isTokenValid(username: any, token: any): {
     error: boolean;
     message: string;
 };
+export function reload(): void;
+export function save(): void;
