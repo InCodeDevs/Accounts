@@ -183,4 +183,4 @@ function existsBox(owner, name) {
     }
 }
 
-module.exports = {createBox, deleteBox, addToBox, removeFromBox, readBox, clearBox, existsBox}
+module.exports = {createBox, deleteBox, addToBox, removeFromBox, readBox, clearBox, existsBox, reload, save}
