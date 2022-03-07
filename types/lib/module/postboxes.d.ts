@@ -26,3 +26,5 @@ export function existsBox(owner: any, name: any): {
     error: boolean;
     message: string;
 };
+export function reload(): void;
+export function save(): void;
